@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <title>the bash profile: a basic setup - blog</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="nnungester" />
+    <meta name="description" content="a primer to getting a comfy terminal" />
+    <meta name="keywords" content="setup, beginner" />
+    <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+    <link rel="stylesheet" href="/media/css/prettify.css" type="text/css">
+  </head>
+  <body class="container">
+    <div>
+      <header class="masthead">
+        <h1 class="masthead-title"><a href="/">blog</a></h1>
+        <p>programming and linux</p>
+        <ul>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/media/">Media</a></li>
+          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/about/">About</a></li>
+          <li><a href="https://github.com/nnungest">GitHub</a></li>
+          <li><a href="/rss.xml">RSS</a></li>
+        </ul>
+        <form method="get" id="searchform" action="//www.google.com/search">
+          <input type="text" class="field" name="q" id="s" placeholder="Search">
+          <input type="hidden" name="as_sitesearch" value="nnungest.github.io">
+        </form>
+      </header>
+    </div>
+
+<div>
+<div class="post">
+<h1>the bash profile: a basic setup</h1>
+<div id="outline-container-orgf207dac" class="outline-2">
+<h2 id="orgf207dac">Foreword</h2>
+<div class="outline-text-2" id="text-orgf207dac">
+<p>
+<i>If you already know what a bash\_profile is and how to use one. This page isn't
+for you. This also is just a short and sweet, I'm not going to go into the details of the differences between a .bashrc and a .bash_profile.</i>
+</p>
+
+<p>
+<b>What is this and why do I need one?</b>: because you. Down the road you are going to complain about how much typing you have to do, or how hard it is to get setup and working. A bash profile or bashrc allows you to store custom settings for your shell session.  
+</p>
+
+<p>
+Below are a couple ways to set up your bash\_profile. I'm basing this off my personal one so take this setup with a grain of salt. Also, this is mainly a setup for MacOS. I'll cover linux later. 
+This can be done a variety of ways, here are two (of many potential) differing options: 
+</p>
+</div>
+</div>
+
+<div id="outline-container-org9b09f2a" class="outline-2">
+<h2 id="org9b09f2a">Option 1 .. a single file</h2>
+<div class="outline-text-2" id="text-org9b09f2a">
+<p>
+Create a file called ~/.bash\_profile and add these contents:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash" id="org5909236">#!/bin/bash
+export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\n\$ "
+export CLICOLOR=1
+export LSCOLORS="ExFxBxDxCxegedabagacad"
+export PATH=$HOME/bin:$HOME/.local/bin:$PATH
+#-----
+# custom additions
+#-----
+# example
+# export GOPATH=$HOME/go
+</pre>
+</div>
+
+<p>
+then `source ~/.bash_profile`
+</p>
+</div>
+</div>
+<div id="outline-container-org3cea6be" class="outline-2">
+<h2 id="org3cea6be">Option 2 .. a split file</h2>
+<div class="outline-text-2" id="text-org3cea6be">
+<p>
+Though my setup changes from time to time, I generally setup my structure as follows:
+</p>
+
+<p>
+. $HOME
+├── .bash_profile
+└── .bash_profile.d
+    ├── core.sh
+    └── development.sh
+</p>
+
+<p>
+We can setup this structure with the following:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash" id="org83906e0">
+cd
+mkdir ~/.bash_profile.d
+touch {.bash_profile,.bash_profile.d/core.sh,.bash_profile.d/development.sh}
+
+</pre>
+</div>
+
+<p>
+For your ~/.bash_profile: 
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash" id="orge653042">
+#!/usr/bin/env bash
+
+for f in $HOME/.bash_profile.d/*.sh
+do
+        . ${f}
+done
+</pre>
+</div>
+
+<p>
+Core to me is anything that I want to keep and hold on to for future uses. Any
+aliases,helpers and custom functions go here for me. The following just gets you
+a path and pretty prompt.
+</p>
+
+<p>
+For your ~/.bash\_profile.d/core.sh:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash" id="org780b07b">
+#!/bin/bash
+# PS1 line below gives you a fancy prompt. Which starts you an a clean line below your pwd..
+export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\n\$ "
+export CLICOLOR=1
+export LSCOLORS="ExFxBxDxCxegedabagacad"
+export PATH=$HOME/bin:$HOME/.local/bin:$PATH
+
+</pre>
+</div>
+
+<p>
+development.sh just includes anything work / job function related for me. any third party settings go here:
+</p>
+
+<p>
+For your ~/.bash\_profile.d/development.sh:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash" id="org3a27c86">
+#!/bin/bash
+# example 
+export GOPATH=$HOME/go
+
+</pre>
+</div>
+
+<p>
+then `source ~/.bash_profile`
+</p>
+</div>
+</div>
+<div id="outline-container-org9116ddb" class="outline-2">
+<h2 id="org9116ddb">Notes and stuff</h2>
+<div class="outline-text-2" id="text-org9116ddb">
+<p>
+Go crazy with it. Organize this however you want. Alias all the things. That's how you become l33t.
+</p>
+
+<p>
+Links to more info about profiles in general:
+</p>
+
+<p>
+<a href="https://apple.stackexchange.com/questions/51036/what-is-the-difference-between-bash-profile-and-bashrc">https://apple.stackexchange.com/questions/51036/what-is-the-difference-between-bash-profile-and-bashrc</a>
+</p>
+
+<p>
+<a href="https://unix.stackexchange.com/questions/38175/difference-between-login-shell-and-non-login-shell/46856#46856">https://unix.stackexchange.com/questions/38175/difference-between-login-shell-and-non-login-shell/46856#46856</a>
+</p>
+</div>
+</div>
+
+</div>
+</div>
+    <div>
+      <div class="post-meta">
+        <span title="post date" class="post-info">2018-09-30</span>
+        <span title="last modification date" class="post-info">2018-09-30</span>
+        <span title="tags" class="post-info"><a href="/tags/setup/">setup</a>, <a href="/tags/bash/">bash</a></span>
+        <span title="author" class="post-info">nnungester</span>
+      </div>
+      <section>
+        <h1>Comments</h1>
+      </section>
+      <script src="//code.jquery.com/jquery-latest.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="/media/js/main.js"></script>
+      <div class="footer">
+        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 26.x (<a href="http://orgmode.org">Org mode</a> 9.x)</p>
+        <p>
+          Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:nnungester &lt;at&gt; nnungester-mbp &lt;dot&gt; local">nnungester</a>
+          &nbsp;&nbsp;-&nbsp;&nbsp;
+          Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
+          <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
+        </p>
+      </div>
+    </div>
+
+  </body>
+</html>
