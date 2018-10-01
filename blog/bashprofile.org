@@ -39,13 +39,13 @@ then `source ~/.bash_profile`
 ** Option 2 .. a split file
 
 Though my setup changes from time to time, I generally setup my structure as follows:
-
+#+BEGIN_SRC text
 . $HOME
 ├── .bash_profile
 └── .bash_profile.d
     ├── core.sh
     └── development.sh
-
+#+END_SRC
 We can setup this structure with the following:
 
 #+NAME: setup
