@@ -13,7 +13,7 @@
     <div>
       <header class="masthead">
         <h1 class="masthead-title"><a href="/">blog</a></h1>
-        <p>programming and linux</p>
+        <p>developer things</p>
         <ul>
           <li><a href="/blog/">Blog</a></li>
           <li><a href="/media/">Media</a></li>
@@ -33,9 +33,9 @@
 <div>
 <div class="post">
 <h1>the bash profile: a basic setup</h1>
-<div id="outline-container-org7c106f2" class="outline-2">
-<h2 id="org7c106f2">Foreword</h2>
-<div class="outline-text-2" id="text-org7c106f2">
+<div id="outline-container-orge36ebc0" class="outline-2">
+<h2 id="orge36ebc0">Foreword</h2>
+<div class="outline-text-2" id="text-orge36ebc0">
 <p>
 <i>If you already know what a bash\_profile is and how to use one. This page isn't
 for you. This also is just a short and sweet, I'm not going to go into the details of the differences between a .bashrc and a .bash_profile.</i>
@@ -52,15 +52,15 @@ This can be done a variety of ways, here are two (of many potential) differing o
 </div>
 </div>
 
-<div id="outline-container-org19aeaec" class="outline-2">
-<h2 id="org19aeaec">Option 1 .. a single file</h2>
-<div class="outline-text-2" id="text-org19aeaec">
+<div id="outline-container-org14138ce" class="outline-2">
+<h2 id="org14138ce">Option 1 .. a single file</h2>
+<div class="outline-text-2" id="text-org14138ce">
 <p>
 Create a file called ~/.bash\_profile and add these contents:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-bash" id="org0bf02ec">#!/bin/bash
+<pre class="src src-bash" id="orgf797d84">#!/bin/bash
 export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\n\$ "
 export CLICOLOR=1
 export LSCOLORS="ExFxBxDxCxegedabagacad"
@@ -78,26 +78,27 @@ then `source ~/.bash_profile`
 </p>
 </div>
 </div>
-<div id="outline-container-org9653079" class="outline-2">
-<h2 id="org9653079">Option 2 .. a split file</h2>
-<div class="outline-text-2" id="text-org9653079">
+<div id="outline-container-orgec6ab34" class="outline-2">
+<h2 id="orgec6ab34">Option 2 .. a split file</h2>
+<div class="outline-text-2" id="text-orgec6ab34">
 <p>
 Though my setup changes from time to time, I generally setup my structure as follows:
 </p>
-<div class="org-src-container">
-<pre class="src src-text">. $HOME
+
+<p>
+. $HOME
 ├── .bash_profile
 └── .bash_profile.d
     ├── core.sh
     └── development.sh
-</pre>
-</div>
+</p>
+
 <p>
 We can setup this structure with the following:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-bash" id="org86e8c40">
+<pre class="src src-bash" id="org5f29184">
 cd
 mkdir ~/.bash_profile.d
 touch {.bash_profile,.bash_profile.d/core.sh,.bash_profile.d/development.sh}
@@ -110,7 +111,7 @@ For your ~/.bash_profile:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-bash" id="org6f4d01c">
+<pre class="src src-bash" id="org91aa065">
 #!/usr/bin/env bash
 
 for f in $HOME/.bash_profile.d/*.sh
@@ -131,7 +132,7 @@ For your ~/.bash\_profile.d/core.sh:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-bash" id="org8632e08">
+<pre class="src src-bash" id="org626ccff">
 #!/bin/bash
 # PS1 line below gives you a fancy prompt. Which starts you an a clean line below your pwd..
 export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\n\$ "
@@ -151,7 +152,7 @@ For your ~/.bash\_profile.d/development.sh:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-bash" id="org58fda8b">
+<pre class="src src-bash" id="orgb8e08f8">
 #!/bin/bash
 # example 
 export GOPATH=$HOME/go
@@ -164,9 +165,9 @@ then `source ~/.bash_profile`
 </p>
 </div>
 </div>
-<div id="outline-container-org6a0004b" class="outline-2">
-<h2 id="org6a0004b">Notes and stuff</h2>
-<div class="outline-text-2" id="text-org6a0004b">
+<div id="outline-container-org7a009ef" class="outline-2">
+<h2 id="org7a009ef">Notes and stuff</h2>
+<div class="outline-text-2" id="text-org7a009ef">
 <p>
 Go crazy with it. Organize this however you want. Alias all the things. That's how you become l33t.
 </p>
