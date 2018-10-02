@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <title>osx: install spacemacs and spf13vim - blog</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="nnungester" />
+    <meta name="description" content="getting setup with vim and emacs" />
+    <meta name="keywords" content="vim, emacs, spacemacs, spf13vim" />
+    <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+    <link rel="stylesheet" href="/media/css/prettify.css" type="text/css">
+  </head>
+  <body class="container">
+    <div>
+      <header class="masthead">
+        <h1 class="masthead-title"><a href="/">blog</a></h1>
+        <p>developer things</p>
+        <ul>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/media/">Media</a></li>
+          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/about/">About</a></li>
+          <li><a href="https://github.com/nnungest">GitHub</a></li>
+          <li><a href="/rss.xml">RSS</a></li>
+        </ul>
+        <form method="get" id="searchform" action="//www.google.com/search">
+          <input type="text" class="field" name="q" id="s" placeholder="Search">
+          <input type="hidden" name="as_sitesearch" value="nnungest.github.io">
+        </form>
+      </header>
+    </div>
+
+<div>
+<div class="post">
+<h1>osx: install spacemacs and spf13vim</h1>
+<div id="outline-container-org04dd691" class="outline-2">
+<h2 id="org04dd691">age old battle</h2>
+<div class="outline-text-2" id="text-org04dd691">
+<p>
+Many verbal battles have been waged in the fight between vim and emacs. I suck at both, so I cant really pick a side. Due to me barely finding my way out of vim, yet needing some sparkles while using it, I opt for using a distro. 
+</p>
+
+<p>
+For Vim I use Steve Francia's SPF13-vim <a href="https://github.com/spf13/spf13-vim">https://github.com/spf13/spf13-vim</a>  
+</p>
+
+<p>
+And for Emacs I use spacemacs. <a href="http://spacemacs.org/">http://spacemacs.org/</a>
+</p>
+
+<p>
+People argue that using a distro causes you to not fully "learn" vim, or emacs.. I don't really buy that, and I don't think you should either. If you would like to learn the ins and outs of vim, there are plenty of online vim tutors - even vim games. Just get in the habit of using it for simple things over pico or nano. Start bite sized. Don't assume you'll be able to drop your ide for vim right away.  
+</p>
+
+<p>
+Before you dive into spacemacs, you should probably learn the basics of vim (switching modes, moving around the text, editing, inserting, saving and exiting). I really only use spacemacs for writing tasks like blogging or writing notes. I looked far and wide for something better to use than markdown and org-mode stood out. Org mode, for now at least, is really the only reason I use emacs.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org51a3dda" class="outline-2">
+<h2 id="org51a3dda">installation</h2>
+<div class="outline-text-2" id="text-org51a3dda">
+<p>
+Vim:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash" id="org549a6c2"># vim install with spf13-vim
+brew install vim --with-lua
+curl http://j.mp/spf13-vim3 -L -o - | sh
+</pre>
+</div>
+
+<p>
+Emacs: 
+</p>
+<div class="org-src-container">
+<pre class="src src-bash" id="org8ced032"># emacs install with spacemacs
+brew tap d12frosted/emacs-plus
+brew install emacs-plus
+brew linkapps emacs-plus
+git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org77ac0d1" class="outline-2">
+<h2 id="org77ac0d1">vimrc.local vimrc.vless</h2>
+<div class="outline-text-2" id="text-org77ac0d1">
+<p>
+Instead of editing the config for spf13 .. you should create a ~/.vimrc.local file:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-vimscript" id="org99b7c80">set nocompatible            
+let g:is_bash = 1
+set background=dark          
+filetype plugin indent on    
+set foldmethod=manual
+syntax on                    
+set mouse=a                  
+set mousehide                
+scriptencoding utf-8         
+set conceallevel=0
+au FileType markdown setl conceallevel=0
+let g:indentLine_fileTypeExclude=['markdown']
+au BufRead,BufNewFile *.md setlocal textwidth=80
+</pre>
+</div>
+
+<p>
+I like to use vim as a pager from time to time here is a config I took from <a href="http://vim.wikia.com/wiki/Using_vim_as_a_syntax-highlighting_pager">vim.wikia.com</a>
+</p>
+
+<p>
+Set the following in your bashrc or profile:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash" id="org6d5ad8b"># to pipe into the pager: curl cheat.sh/markdown?T | vpless
+alias vpless="vim -u $HOME/.vimrc.vless -"
+# otherwise: vless bacon.txt
+alias vless="vim -u ~/.vimrc.vless"
+# start vim without a config (usefull for learning!) cvim for "clean vim"
+alias cvim="vim -u NONE"
+</pre>
+</div>
+
+<p>
+Create a file named vimrc.vless in your home directory and paste the following in:
+<i>note: on osx copy the following block and at your terminal do `pbpaste &gt; ~</i>.vimrc.vless`/
+</p>
+
+<div class="org-src-container">
+<pre class="src src-vimscript" id="orgec3e5e7">
+" No compatibility – necessary for mappings to work.
+set nocompatible
+
+" Status line
+set laststatus=0
+set cmdheight=1
+set nomodifiable 
+set readonly
+
+set background=dark
+
+" Turn syntax on
+syntax enable
+
+" No menu bar nor tool bar
+set guioptions=aiMr
+
+" Key bindings.
+nmap b &lt;C-B&gt;&lt;C-G&gt;
+nmap q :q!&lt;CR&gt;
+nmap &lt;Up&gt; &lt;C-Y&gt;
+nmap &lt;Down&gt; &lt;C-E&gt;
+
+" To type the following line, type *two* C-V's followed by two spaces. This
+" is how you map the spacebar.
+nmap ^V &lt;C-F&gt;&lt;C-G&gt;"
+
+</pre>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+    <div>
+      <div class="post-meta">
+        <span title="post date" class="post-info">2018-09-30</span>
+        <span title="last modification date" class="post-info">2018-10-01</span>
+        <span title="tags" class="post-info"><a href="/tags/vim/">vim</a>, <a href="/tags/emacs/">emacs</a></span>
+        <span title="author" class="post-info">nnungester</span>
+      </div>
+      <section>
+        <h1>Comments</h1>
+      </section>
+      <script src="//code.jquery.com/jquery-latest.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="/media/js/main.js"></script>
+      <div class="footer">
+        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 26.x (<a href="http://orgmode.org">Org mode</a> 9.x)</p>
+        <p>
+          Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:nnungester &lt;at&gt; nnungester-mbp &lt;dot&gt; local">nnungester</a>
+          &nbsp;&nbsp;-&nbsp;&nbsp;
+          Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
+          <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
+        </p>
+      </div>
+    </div>
+
+  </body>
+</html>
