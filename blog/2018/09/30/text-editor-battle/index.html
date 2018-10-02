@@ -33,9 +33,9 @@
 <div>
 <div class="post">
 <h1>osx: install spacemacs and spf13vim</h1>
-<div id="outline-container-orge6e75d9" class="outline-2">
-<h2 id="orge6e75d9">age old battle</h2>
-<div class="outline-text-2" id="text-orge6e75d9">
+<div id="outline-container-org7d6b98b" class="outline-2">
+<h2 id="org7d6b98b">age old battle</h2>
+<div class="outline-text-2" id="text-org7d6b98b">
 <p>
 Many verbal battles have been waged in the fight between vim and emacs. I suck at both, so I cant really pick a side. Due to me barely finding my way out of vim, yet needing some sparkles while using it, I opt for using a distro. 
 </p>
@@ -58,14 +58,14 @@ Before you dive into spacemacs, you should probably learn the basics of vim (swi
 </div>
 </div>
 
-<div id="outline-container-orgb7d349b" class="outline-2">
-<h2 id="orgb7d349b">installation</h2>
-<div class="outline-text-2" id="text-orgb7d349b">
+<div id="outline-container-orgda6ffdf" class="outline-2">
+<h2 id="orgda6ffdf">installation</h2>
+<div class="outline-text-2" id="text-orgda6ffdf">
 <p>
 Vim:
 </p>
 <div class="org-src-container">
-<pre class="src src-bash" id="orga4cb3fa"># vim install with spf13-vim
+<pre class="src src-bash" id="orgdec0280"># vim install with spf13-vim
 brew install vim --with-lua
 curl http://j.mp/spf13-vim3 -L -o - | sh
 </pre>
@@ -75,7 +75,7 @@ curl http://j.mp/spf13-vim3 -L -o - | sh
 Emacs: 
 </p>
 <div class="org-src-container">
-<pre class="src src-bash" id="org8f3d184"># emacs install with spacemacs
+<pre class="src src-bash" id="org86da52a"># emacs install with spacemacs
 brew tap d12frosted/emacs-plus
 brew install emacs-plus
 brew linkapps emacs-plus
@@ -85,15 +85,15 @@ git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
 </div>
 </div>
 
-<div id="outline-container-org077d839" class="outline-2">
-<h2 id="org077d839">vimrc.local vimrc.vless</h2>
-<div class="outline-text-2" id="text-org077d839">
+<div id="outline-container-org576f727" class="outline-2">
+<h2 id="org576f727">vimrc.local vimrc.vless</h2>
+<div class="outline-text-2" id="text-org576f727">
 <p>
 Instead of editing the config for spf13 .. you should create a ~/.vimrc.local file:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-vimscript" id="org197aa19">set nocompatible            
+<pre class="src src-vimscript" id="org6120fe7">set nocompatible            
 let g:is_bash = 1
 set background=dark          
 filetype plugin indent on    
@@ -118,7 +118,7 @@ Set the following in your bashrc or profile:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-bash" id="org00d4fc7"># to pipe into the pager: curl cheat.sh/markdown?T | vpless
+<pre class="src src-bash" id="orgde5c2b1"># to pipe into the pager: curl cheat.sh/markdown?T | vpless
 alias vpless="vim -u $HOME/.vimrc.vless -"
 # otherwise: vless bacon.txt
 alias vless="vim -u ~/.vimrc.vless"
@@ -133,7 +133,7 @@ Create a file named vimrc.vless in your home directory and paste the following i
 </p>
 
 <div class="org-src-container">
-<pre class="src src-vimscript" id="org1ebc84f">
+<pre class="src src-vimscript" id="orgb899241">
 " No compatibility – necessary for mappings to work.
 set nocompatible
 
