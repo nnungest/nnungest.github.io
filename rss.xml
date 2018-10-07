@@ -4,10 +4,31 @@
     <title>blog</title>
     <link>http://nnungest.github.io</link>
     <description>developer things</description>
-    <pubDate>Sat, 06 Oct 2018 20:07:19 EDT</pubDate>
-    <lastBuildDate>Sat, 06 Oct 2018 20:07:19 EDT</lastBuildDate>
+    <pubDate>Sat, 06 Oct 2018 20:28:32 EDT</pubDate>
+    <lastBuildDate>Sat, 06 Oct 2018 20:28:32 EDT</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
+    <item>
+      <title>Getting Groovy with Jenkins</title>
+      <link>http://nnungest.github.io/blog/2018/10/04/getting-groovy-with-jenkins</link>
+      <description><![CDATA[ranting about jenkins]]></description>
+      <pubDate>2018-10-06</pubDate>
+      <guid>http://nnungest.github.io/blog/2018/10/04/getting-groovy-with-jenkins</guid>
+    </item>
+    <item>
+      <title>Getting Groovy with Jenkins</title>
+      <link>http://nnungest.github.io/blog/2018/10/04/getting-groovy-with-jenkins</link>
+      <description><![CDATA[ranting about jenkins]]></description>
+      <pubDate>2018-10-06</pubDate>
+      <guid>http://nnungest.github.io/blog/2018/10/04/getting-groovy-with-jenkins</guid>
+    </item>
+    <item>
+      <title>the bash profile: a basic setup</title>
+      <link>http://nnungest.github.io/blog/2018/09/30/the-bash-profile-a-basic-setup</link>
+      <description><![CDATA[a primer to getting a comfy terminal]]></description>
+      <pubDate>2018-10-01</pubDate>
+      <guid>http://nnungest.github.io/blog/2018/09/30/the-bash-profile-a-basic-setup</guid>
+    </item>
     <item>
       <title>osx: install spacemacs and spf13vim</title>
       <link>http://nnungest.github.io/blog/2018/09/30/text-editor-battle</link>
@@ -16,11 +37,19 @@
       <guid>http://nnungest.github.io/blog/2018/09/30/text-editor-battle</guid>
     </item>
     <item>
-      <title>the bash profile: a basic setup</title>
-      <link>http://nnungest.github.io/blog/2018/09/30/the-bash-profile-a-basic-setup</link>
-      <description><![CDATA[a primer to getting a comfy terminal]]></description>
-      <pubDate>2018-09-30</pubDate>
-      <guid>http://nnungest.github.io/blog/2018/09/30/the-bash-profile-a-basic-setup</guid>
+      <title>media</title>
+      <link>http://nnungest.github.io/blog/2018/10/06/media/</link>
+      <description><![CDATA[<div>
+<div class="post">
+<h1>media</h1>
+<p>
+i currently don't have any cool audio
+</p>
+
+</div>
+</div>]]></description>
+      <pubDate>2018-10-01</pubDate>
+      <guid>http://nnungest.github.io/blog/2018/10/06/media/</guid>
     </item>
   </channel>
 </rss>

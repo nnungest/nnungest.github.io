@@ -1,1 +1,47 @@
-nnungester@nnungester-mbp.local.4998
+#+TITLE:       Getting Groovy with Jenkins
+#+AUTHOR:      nnungester
+#+EMAIL:       nnungester@nnungester-mbp.local
+#+DATE:        2018-10-04 Thu
+#+URI:         /blog/%y/%m/%d/getting-groovy-with-jenkins
+#+KEYWORDS:    jenkins, CICD, emacs
+#+TAGS:        beginner, groovy
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: ranting about jenkins
+
+** grooves
+
+ I thought making a few edits to a groovy file for a pipeline would be simple enough, but no. Jenkins is picky about groovy code and there are a few gotchas. (eg serialization, character escaping, lack of certain builtins). Getting into the groove of things didn't feel all that straightforward to me. 
+
+I managed to get my editor of choice fixed up. All I had to do for spacemacs was enable a layer and switch to develop branch. 
+
+#+BEGIN_SRC bash
+  cd ~/.emacs.d/
+  git branch -r 
+  git checkout develop
+#+END_SRC 
+
+~/.spacemacs snippet
+
+#+BEGIN_SRC elisp
+  dotspacemacs-configuration-layers
+   '(
+     html
+     ;; ----------------------------------------------------------------
+     ;; Example of useful layers you may want to use right away.
+     ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
+     ;; <M-m f e R> (Emacs style) to install them.
+     ;; ----------------------------------------------------------------
+     helm
+     ;; auto-completion
+     ;; better-defaults
+     groovy
+     emacs-lisp
+     ;; other code and more layers vvv 
+#+END_SRC
+
+Now I can evaluate blocks of code through REPL. 
+
+** console support
+
+   I have groovy installed with brew and it ships with a console of sorts `groovyConsole` which is pretty terrible. There is a pretty good online console here: [[http://groovyconsole.appspot.com/][groovywebconsole]] . Unfortunately, other than running code as scripts, or using the emacs groovy layer to evaluate code, I've not found a very useful lightweight console for local development without installing eclipse or intellij. The hunt continues!

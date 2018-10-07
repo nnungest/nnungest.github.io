@@ -40,6 +40,8 @@ I managed to get my editor of choice fixed up. All I had to do for spacemacs was
      ;; other code and more layers vvv 
 #+END_SRC
 
+Now I can evaluate blocks of code through REPL. 
+
 ** console support
 
-   I have groovy installed with brew and it ships with a console of sorts `groovyConsole` which is pretty terrible. There is a pretty good online console here: [[http://groovyconsole.appspot.com/][groovywebconsole]] . Unfortunately, other than running code as scripts, or using the emacs groovy layer to evaluate code, I've not found a very useful lightweight console for local development without installing eclipse or intellij 
+   I have groovy installed with brew and it ships with a console of sorts `groovyConsole` which is pretty terrible. There is a pretty good online console here: [[http://groovyconsole.appspot.com/][groovywebconsole]] . Unfortunately, other than running code as scripts, or using the emacs groovy layer to evaluate code, I've not found a very useful lightweight console for local development without installing eclipse or intellij. The hunt continues!
